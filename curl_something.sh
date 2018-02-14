@@ -8,6 +8,7 @@ DATE=$(date)
 function curl_this {
 	for ((i=1; i<=$TIMES; i++)); do
 		 curl -i -s -o /dev/null -w "%{http_code}\n" $URL/;
+		# wget -q -O - $URL/ | xmllint --html --xpath '//div[@class = "hidden"]' - 2>/dev/null | grep "data" | awk -F"\"" '{print $2}';
 	done
 	}
 function curl_response_count {
